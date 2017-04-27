@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> shopping_car</title>
+	<meta charset="UTF-8">
+	<meta charset = "utf-8" name="viewport" content="width = device-width,initial-scale = 1.0,user-scalable = no">
+	 <script type="text/javascript" src = "js/zepto.js"></script>
+	 <script type="text/javascript" src = "js/zepto-touch.js"></script>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+			width: 100%;
+			font-size: 64.5%;
+		}
+
+
+
+
+
+
+		.box{
+			height: 100%;
+			width: 100%;
+			/* overflow: hidden; */
+			display: -webkit-box;
+			display: box;
+			-webkit-box-orient:vertical;
+		}
+		.head,.foot{
+			height: 5rem;
+			width: 100%;
+		}
+		.head{
+			background: #D81E06;
+			position: relative;
+		}
+		 
+		
+
+
+
+
+
+
+
+
+        .foot{
+			display: -webkit-box;
+			display: box;
+			
+			background: #484850;
+			color:#FFFFFF;
+		}
+        .icon{
+			width: 1em; 
+			height: 1em;
+			vertical-align: -0.15em;
+			fill: currentColor;
+			overflow: hidden;
+		}
+		.bottom_pic{
+			-webkit-box-flex:1;
+			box-flex:1;
+			list-style: none;
+			font-size: 0.2rem;
+			text-align: center;
+		}
+		.bottom_pic span{
+			display: inline-block;
+			font-size: 1.6rem; 
+			margin-top: 0.1rem;
+		}
+		.bottom_pic .img{
+			 /*height: 2.2rem;
+			 width: 3.5rem;*/
+			 font-size: 3.5rem;
+		}
+
+
+
+
+
+
+
+
+		/*.box{
+			height: 100%;
+			width: 100%;
+			display: -webkit-box;
+			display: box;
+			-webkit-box-orient:vertical;
+		}
+
+
+		.head,.foot{
+			height: 5rem;
+			width: 100%;
+
+		}
+		.head{
+			background: #D81E06;
+			position: relative;
+
+		}
+		 
+		.foot{
+			display: -webkit-box;
+			display: box;
+
+			background: #484850;
+			color:#FFFFFF;
+		}*/
+
+
+
+
+
+		.show_number,.main{
+			width: 100%;
+		}
+		/*.head{
+			height: 5rem;
+			background: #B11F1F;
+			width: 100%;
+			color: #F9EFEE;
+			text-align: center;
+			position: relative;
+
+		}
+		.foot{
+			height: 5rem;
+			width: 100%;
+			background: #484850;
+			display: -webkit-box;
+			display: box;
+		}*/
+		/*.foot{
+			display: -webkit-box;
+			display: box;
+
+			background: #484850;
+			color:#FFFFFF;
+		}*/
+		
+		.show_number{
+			background: #747474;
+			text-align: center;
+			color: #F6F6F6;
+			height: 5rem;
+			line-height: 5rem;
+			font-size: 1.6rem;
+		}
+		.number_box{
+			margin-top: 0.3rem;
+		}
+		.number2{
+			color: red;
+		}
+		/*.foot li{
+			list-style: none;
+			-webkit-box-flex:1;
+			box-flex:1;
+			text-align: center;
+		}*/
+
+
+
+
+		.icon {
+		    width: 1em; height: 1em;
+		    vertical-align: -0.15em;
+		    fill: currentColor;
+		    overflow: hidden;
+		}
+		.bottom_pic{
+			-webkit-box-flex:1;
+			box-flex:1;
+			list-style: none;
+			font-size: 0.2rem;
+			text-align: center;
+		}
+		.bottom_pic span{
+			display: inline-block;
+			font-size: 1.6rem; 
+			margin-top: 0.1rem;
+		}
+		.bottom_pic .img{
+			 /*height: 2.2rem;
+			 width: 3.5rem;*/
+			 font-size: 3.5rem;
+		}
+
+
+
+
+
+
+
+
+
+
+		/*.foot_img{
+			margin-top: 0.1rem;
+			width: 50%;
+			height: 0.4rem;
+		}
+		.bot_text{
+			display: block;
+			margin-top: 0.05rem;
+			color: #FFFFFF;
+			font-size: 0.2rem;
+			font-weight: 900;
+		}
+*/
+
+
+
+
+
+		.count{
+			display: inline-block;
+			height: 4rem;
+			width: 4rem;
+			font-size: 2rem; 
+			border:0;
+			box-shadow: 0rem 0rem 5px #840807;
+			
+			position: absolute;
+			left: 80%;
+			top: 0.5rem;
+			z-index: 10;
+			color: #FFFFFF;
+			border-radius: 10px;
+			background-color:#D81E06; 
+			outline: none;
+			font-family: "microsoft yahei"
+		}
+		.title{
+			display: inline-block;
+			font-size: 3rem;
+			font-weight: 900;
+			position: absolute;
+			top:1rem;
+			left:37%;
+			color: #FFFFFF;
+		}
+		
+		
+		.main{
+			width: 100%;
+			overflow: scroll;
+			box-flex:1;
+			-webkit-box-flex:1;
+
+		}
+		.main::-webkit-scrollbar{
+			display: none;
+		}
+		.goods_details{
+			padding: 0.2rem;
+			display: block;
+			display: -webkit-box;
+			border-bottom: 2px solid #B6B6B6;
+			overflow: scroll;
+			width: 100%;
+		}
+		.goods_details::-webkit-scrollbar{
+			display: none;
+		}
+		.goods_img{
+			-webkit-box-flex:1;
+			box-flex:1;
+			width: 50%;
+
+		}
+		.goods_img img{
+			height: 100%;
+			width: 100%;
+
+		}
+		.goods_text{
+			-webkit-box-flex:1;
+			box-flex:1;
+			font-size: 1.6rem;
+			margin-top: 0.1rem;
+			color: #333333;
+			font-family: "microsoft yahei";
+			overflow: scroll;
+			width: 50%;
+		}
+		.goods_text::-webkit-scrollbar{
+			display: none;
+		}
+		.delete{
+			height: 2rem;
+			width: 2rem;
+			display: inline-block;
+		}
+		.delete img{
+			height: 100%;
+			width: 100%;
+		}
+		.single_price{
+			color: red;
+			font-size: 2rem;
+		}
+		.minus,.plus{
+			height: 2rem;
+			width: 2rem;
+			background: #838383;
+			outline:none;
+			border: 0;
+			border-radius: 0.04rem; 
+			font-size: 2rem;
+			border-radius: 0.1rem;
+		}
+		.quantity{
+			width: 2rem;
+			box-shadow: 0 0 5px #BCBCBC inset;
+			font-size: 2rem;
+			display: inline-block;
+			height: 2rem;
+			border-radius: 0.4rem;
+			text-align: center;
+			line-height: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<header class = "head">
+			<span class = "title">
+				购物袋
+			</span>
+			<button class="count">结算</button>
+		</header>
+		<section class = "show_number">
+			<p class="number_box">
+				<span class = "text1">商品数量:</span>
+				<span class = "number1"></span>&nbsp;
+				<span class = "text2">应付总额（不含运费）</span>
+				<span class = "number2"></span>
+			</p>
+		</section>
+		<section class = "main">
+			<!-- <div class="goods_details">
+				
+				<div class="goods_img">
+					<img src="images/gao1.jpg"/>
+				</div>
+				<div class="goods_text">
+					<p>
+							ESPRIT &nbsp;气质V领玫红&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span class = "delete">
+							<img src="images/delete.jpg"/>
+						</span>
+			
+					</p>
+					<p>T恤</p>
+					<p>单价:￥<span class = "single_price">199</span></p>
+					<p>
+						数量：
+						<button id = "minus">-</button>
+						<span class = "quantity">1</span>
+						<button id="plus">+</button>
+					</p>
+				</div>
+			</div>
+			 -->
+			
+		</section>
+		<footer class = "foot">
+			<li class = "bottom_pic" id="firstPage">
+					<svg class="icon img" aria-hidden="true">
+					  <use xlink:href="#icon-shouye-shouye"></use>
+					</svg><br/>
+					<div class="countDiv"></div>
+					<span>
+						首页
+					</span>
+			</li>
+			<li class = "bottom_pic">
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-fenlei"></use>
+				</svg><br/>
+				<span>
+					分类
+				</span>
+			</li>
+			<li class = "bottom_pic" id="bottom_pic_car">
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-gouwudai"></use>
+				</svg><br/>
+				<span class = "shopping_car_pic">
+					购物袋
+				</span>
+			</li>
+			<li class = "bottom_pic" id = "myShow">
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-iconfontwode"></use>
+				</svg><br/>
+				<span>
+					我的秀
+				</span>
+			</li>
+		</footer>
+	</div>
+	<script type="text/javascript" src = "aliyunImg/icon/iconfont.js"></script>
+	<script type="text/javascript">
+		var user = localStorage.getItem("userID");
+		$(function(){
+			
+			$.ajax({
+				url:"http://datainfo.duapp.com/shopdata/getCar.php",
+				type:"get",
+				data:{
+					userID:user
+
+				},
+				dataType:"jsonp",
+				success:function(data){
+					//console.log(data);
+					var html = "";
+			 		var arr = [];
+			 		var kindsNumber = data.length;
+			 		var kindsPrice = null;
+					if(data == 0){
+						kindsPrice = 0;
+						kindsNumber = 0;
+						kindsPrice = '￥' + kindsPrice;
+						$('.number1').html(kindsNumber);
+						$('.number2').html(kindsPrice);
+						alert("你没有购物车信息");
+					}else{
+						for(var i = 0 ; i < data.length ; i++){
+							html +=  "<div class='goods_details'><div class='goods_img'><img src='" + data[i].goodsListImg +"'/></div><div class='goods_text'><p>"+ data[i].goodsName +"<svg class = 'icon delete' id = '" + data[i].goodsID + "' aria-hidden = 'true'><use xlink:href='#icon-shanchu'></use></svg></p><p>T恤</p><p>单价:￥<span class = 'single_price' id = 'num"+ data[i].goodsID +"'>" + data[i].price + "</span></p><p>数量：<button class = 'minus' id = '"+data[i].goodsID+"'>-</button><span class = 'quantity' id = 'quantity"+data[i].goodsID+"'>1</span><button class = 'plus' id = '"+data[i].goodsID+"'>+</button></p></div></div>";
+							kindsPrice += parseInt(data[i].price);
+
+						}
+						$(".main").html(html);
+						kindsPrice = '￥' + kindsPrice;
+						$('.number1').html(kindsNumber);
+						$('.number2').html(kindsPrice);
+
+					}
+
+					// var num = data[0].goodsID;
+					// var ppt = "num" + num;
+					 
+					 
+					// console.log($("#" + ppt).html());
+					// console.log(ppt);
+
+					$(".delete").on("click",function(){
+						//console.log(user);
+						 
+					//alert("ok");
+						var sureDelete = confirm('你确定要删除此商品吗？');
+						if(sureDelete){
+							$.ajax({
+								url:"http://datainfo.duapp.com/shopdata/updatecar.php",
+								type:"get",
+								data:{
+									userID:user,
+									goodsID:this.id,
+									number:0
+								},
+								success:function(data){
+									if(data == 1){
+										location.reload(true);
+									}else if(data == 0){
+										alert("更新失败");
+									}
+								}
+							})
+						}else{
+							return;
+						}
+					
+					})
+
+
+
+
+
+
+
+				//减号点击事件	
+				$('.minus').on('click',function(){
+					var publicSign = this.id;
+					var singleGoodsQuantity = 'quantity' + publicSign;
+					var singleGoodsPrice = 'num' + publicSign;
+					var singlePrice = $('#'+singleGoodsPrice).html();
+					var allPrice = $('.number2').html().split('￥')[1];
+					var singleQuantity = $('#'+singleGoodsQuantity).html();
+					var kindsNumber = $('.number1').html();
+
+					if(singleQuantity > 1){
+						singleQuantity -= 1;
+						kindsNumber -= 1;
+						allPrice -= singlePrice;
+						allPrice = '￥' + allPrice;
+						$('#'+singleGoodsQuantity).html(singleQuantity);
+						$('.number1').html(kindsNumber);
+						$('.number2').html(allPrice);
+					}else{
+						var swipe = confirm('你是要删除此商品吗？');
+						if(swipe){
+
+
+
+							$.ajax({
+								url:"http://datainfo.duapp.com/shopdata/updatecar.php",
+								type:"get",
+								data:{
+									userID:user,
+									goodsID:publicSign,
+									number:0
+								},
+								success:function(data){
+									if(data == 1){
+										location.reload(true);
+									}else if(data == 0){
+										alert("更新失败");
+									}
+								}
+							})
+						}
+					}
+				})
+
+
+
+
+				//加号点击事件
+				$('.plus').on('click',function(){
+					var publicSign = this.id;
+					var singleGoodsQuantity = 'quantity' + publicSign;
+					var singleGoodsPrice = "num" + publicSign;
+					var singlePrice = parseInt($('#'+singleGoodsPrice).html());
+					var allPrice = parseInt($('.number2').html().split('￥')[1]);
+					var singleQuantity = parseInt($('#'+singleGoodsQuantity).html());
+					var kindsNumber = parseInt($('.number1').html());
+					singleQuantity += 1;
+					kindsNumber += 1;
+					allPrice += singlePrice;
+					allPrice = '￥' + allPrice;
+					$('#'+singleGoodsQuantity).html(singleQuantity);
+					$('.number1').html(kindsNumber);
+					$('.number2').html(allPrice);
+				})
+
+
+			}
+
+
+					
+
+
+
+			});
+			$("#firstPage").on("click",function(){
+				window.location.href = "index.html";
+			})
+
+
+
+			$('#myShow').on('click',function(){
+				window.location.href = 'myShow.html';
+			})
+
+		})
+		
+	</script>
+	
+	
+</body>
+</html>

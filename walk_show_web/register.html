@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" name="viewport" content="width = device-width,initial-scale = 1.0,user-scalable = no">
+
+	<meta charset="UTF-8">
+	<script type="text/javascript" src = "js/zepto.js"></script>
+	<script type="text/javascript" src = "js/zepto-touch.js"></script>
+	<title>register</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		html{
+			font-size:64.5%;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		.box{
+			width: 100%;
+			display: -webkit-box;
+			display: box;
+			-webkit-box-orient:vertical;
+			box-orient:vertical;
+			height: 100%;
+			background: #F3EFF0;
+		}
+		.head{
+			background: #A90506;
+			height: 5rem;
+			width: 100%;
+			text-align: center;
+			position: relative;
+			
+		}
+		 
+		.content{
+			text-align: center;
+			width: 100%;
+			box-flex:1;
+			-webkit-box-flex:1;
+		}
+		.btn{
+			background: #B80606;
+		}
+		.login_title{
+			display: inline-block;
+			color:white;
+			font-size: 3rem;
+			font-weight: 700;
+			text-align: center;
+			height: 5rem;
+			line-height:5rem;
+
+		}
+		#sorrow{
+			position: absolute;
+			left: 10%;
+			top:15%;
+		}
+		input{
+			height: 50px;
+			width: 90%;
+			margin-top: 2rem;
+			border: 0;
+
+		}
+		
+		.btn{
+			height: 5rem;
+			width: 80%;
+			border-radius: 5px;
+
+			font-size: 2rem;
+			color: white;
+			margin-bottom: 40%;
+			margin-left: 10%;
+		}
+		.testName,.testPassword,.confirmPassword{
+			width:100%;
+			text-align:center;
+			font-size:1.6rem;
+			font-family:"microsoft yahei";
+			color:red;
+			margin-top:1rem;
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class = "box">
+		<header class = "head">
+
+			<canvas id = "sorrow" height="30px" width = "30px" onclick = "goBack()">
+
+			</canvas>
+			<span class = "login_title">
+
+				用户注册
+
+			</span>
+
+		</header>
+		<section class = "content">
+			<input type="text" placeholder="账户名称:请输入账户" class="in1" onchange = "watchName(event)"><br/>
+			<p class = "testName">
+		  		用户名只能是由字母、数字和下划线组成的6~16位字符且不能以数字开头
+		  	</p>
+			<input type="password" placeholder="登录密码:请输入密码" class = "in2" onchange = "watchPassword(event)"><br/>
+			<p class = "testPassword">
+		  		密码长度不能小于六位
+		  	</p>
+			<input type="password" placeholder = "确认密码:请输入密码" class = "in3" onchange = "watchConfirm(event)"><br/>
+			<p class = "confirmPassword">
+		  		请与原密码保持一致
+		  	</p>
+		</section>
+		
+		 <button class = "btn">
+				确定注册
+		 </button>
+		 
+
+	</div>
+	
+</body>
+</html>
+<script type="text/javascript">
+	var nameMessage,passwordMessage,passwordSureMessage;
+	function watchName(e){
+		var val = $('.in1').val();
+		var pattern = /^[a-zA-Z\_][a-zA-Z\_0-9]{5,15}$/;
+		var check = pattern.test(val);
+		if(!check){
+			$('.testName').css({'display':'block'});
+			nameMessage = false;
+		}else{
+			nameMessage = true;
+			$('.testName').css({'display':'none'});
+		}
+	}
+	function watchPassword(e){
+		var val = $('.in2').val();
+		var pattern = /^[\S]{6,}$/;
+		var check = pattern.test(val);
+		if(!check){
+			$('.testPassword').css({'display':'block'});
+			passwordMessage = false;
+		}else{
+			passwordMessage = true;
+			$('.testPassword').css({'display':'none'});
+		}
+	}
+	function watchConfirm(e){
+		var password = $('.in2').val();
+		var passwordSure = $('.in3').val();
+		if(password != passwordSure){
+			$('.confirmPassword').css({'display':'block'});
+			passwordSureMessage = false;
+		}else{
+			passwordSureMessage = true;
+			$('.confirmPassword').css({'display':'none'});
+		}
+	}
+	function goBack(){
+		window.history.back(-1);
+	}
+	window.onload = function(){
+
+		var sorrow = document.getElementById("sorrow");
+		var so = sorrow.getContext("2d");
+
+
+		so.beginPath();
+		so.fillStyle = "white";
+		so.moveTo(30,10);
+		so.lineTo(30,20);
+		so.lineTo(15,20);
+		so.lineTo(15,30);
+		so.lineTo(0,15);
+		so.lineTo(15,0);
+		so.lineTo(15,10);
+		so.lineTo(30,10);
+		so.fill();
+		so.closePath();
+
+
+		$(".btn").on("click",function(){
+			if(passwordMessage&&nameMessage&&passwordSureMessage){
+				$.ajax({
+					url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+					type:"get",
+					data:{
+						status:"register",
+						userID:$(".in1").val() ,	
+						password:$(".in2").val(),
+					},
+					success:function(data){
+						if(data == 0){
+							alert("用户名重名");
+						}else if(data == 1){
+							var jump = confirm("你已注册成功！点击确定跳转至登录页面")
+							if(jump){
+								window.location.href = "login.html";
+							}
+							
+						}else{
+							alert("填写错误");
+						}
+					}
+			    })
+		    }else{
+		    	confirm("请正确完整填写注册信息!");
+		    	$('.testName').css({'display':'block'});
+		    	$('.testPassword').css({'display':'block'});
+		    	$('.confirmPassword').css({'display':'block'});
+		    }
+			
+		})
+	}
+
+</script>

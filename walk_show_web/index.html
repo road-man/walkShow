@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="utf-8" name="viewport" content="width = device-width,initial-scale = 1.0,user-scalable = no">
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+	<title>商品详情</title>
+	<script type="text/javascript" src = "js/zepto.js">
+	</script>
+	<script type="text/javascript">
+
+		// (function(doc,win){
+		// 	var docEl = doc.documentElement,resizeEvt = 'orientationchange' in window ? 'orientationchange':'resize',
+		// 	recalc = function(){
+		// 		var clientWidth = docEl.clientWidth;
+		// 		if(!clientWidth) return;
+		// 		if(clientWidth >= 60){
+		// 			docEl.style.fontSize = 100 + "px";
+		// 		}else{
+		// 			docEl.style.fontSize = 100*(clientWidth/640) + "px"; 
+		// 		}
+		// 	};
+		// 	if(!doc.addEventListener) return;
+		// 	win.addEventListener(resizeEvt,recalc,false);
+		// 	doc.addEventListener('DOMContentLoaded',recalc,false);
+		// })(document,window);
+
+	</script>
+	<style type = "text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		html,body{
+			width:100%;
+			height: 100%; 
+			font-size:64.5%;
+		}
+		.box{
+			height: 100%;
+			width: 100%;
+			display: -webkit-box;
+			display: box;
+			-webkit-box-orient:vertical;
+			/* overflow: hidden; */
+		}
+		.head,.foot{
+			height: 5rem;
+			width: 100%;
+
+		}
+		.head{
+			background: #D81E06;
+			position: relative;
+
+		}
+		 
+		.foot{
+			display: -webkit-box;
+			display: box;
+			background: #484850;
+			color:#FFFFFF;
+		}
+		.iconfont{
+			height: 5rem;
+			box-flex:1;
+			-webkit-box-flex:1;
+			list-style: none;
+			font-size: 2rem;
+			text-align: center;
+			line-height: 5rem;
+		}
+		.new_goods{
+			display: inline-block;
+			color: white;
+			 position: absolute;
+			 left: 32%;
+			 top:1rem;
+			font-size: 3rem;
+		}
+
+		.shoppingCar{
+			font-size: 6rem;
+			position: absolute;
+			left: 80%;
+			top:0rem;
+			z-index: 10;
+		}
+		.shoppingCarDiv{
+			position: absolute;
+			left: 82%;
+			top: 0.7rem;
+			height: 3.2rem;
+			width: 3.2rem;
+			border-radius: 100%;
+			background-color:white; 
+		}
+		.classify{
+			display: -webkit-box;
+			display: box;
+			height: 5rem;
+		 	background: #979CA0;
+		 	filter: alpha(opacity = 50);
+		 	opacity: 0.5px;
+		 	line-height: 5rem;
+		 	width: 100%;
+		}
+		.classify_pic{
+			-webkit-box-flex:1;
+			box-flex:1;
+			list-style: none;
+			margin-top: -5rem;
+		}
+
+
+
+
+
+
+
+
+
+
+		.main{
+			-webkit-box-flex:1;
+			box-flex:1;
+			overflow: scroll;
+			width: 100%;
+		}
+		.main::-webkit-scrollbar{
+			display: none;
+		}
+		.goods_list{
+			font-size: 2rem;
+			display: -webkit-box;
+			display: border-box;
+			background: #F3F4F6;
+			width: 100%;
+		}
+		.show {
+			/*-webkit-box-flex:1;
+			box-flex:1;*/
+			text-align: center;
+			margin-top: -2rem;
+			width: 100%;
+		}
+		 .show li{
+			list-style: none;
+			width: 50%;
+			height: 25rem;
+			float: left;
+		}
+		.show_pic img {
+			height: 17rem;
+			width: 100%;
+			margin-top: 0;
+		}
+		.price{
+			color: red;
+		}
+		.price,.goodsName{
+			display: block;
+			text-align: left;
+			font-family: 'Microsoft yahei';
+			width: 95%;
+			font-size: 1.5rem;
+		}
+
+
+		
+		
+
+
+		.icon {
+			width: 1em; height: 1em;
+			vertical-align: -0.15em;
+			fill: currentColor;
+			overflow: hidden;
+		}
+		.bottom_pic{
+			-webkit-box-flex:1;
+			box-flex:1;
+			list-style: none;
+			font-size: 0.2rem;
+			text-align: center;
+		}
+		.bottom_pic span{
+			display: inline-block;
+			font-size: 1.6rem; 
+			margin-top: 0.1rem;
+		}
+		.bottom_pic .img{
+			 /*height: 2.2rem;
+			 width: 3.5rem;*/
+			 font-size: 3.5rem;
+		}
+	</style>
+</head>
+<body>
+	<div class = "box">
+		<header class = "head">
+			<span class = "new_goods">
+				新品上市
+			</span>
+			<svg class="icon shoppingCar" aria-hidden="true">
+			  <use xlink:href="#icon-gouwuche"></use>
+			</svg>
+			<div class="shoppingCarDiv"></div>
+		</header>
+		<div class="classify">
+				<!-- <li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li>
+				<li class = "classify_pic">
+					<img src="images/shopping2.jpg" >
+				</li> -->
+				
+				 
+			</div>
+
+
+		<section class = "main">
+			
+			 <div class = "goods_list">
+				<ul class = "show">
+				<!-- 	<li class = "show_pic">
+						<img src="images/gao1.jpg">
+					</li>
+					<li class = "goods_mame">
+						T恤白色
+					</li>
+					<li class = "price">
+						￥49.0元
+					</li>
+				</ul>
+				<ul class = "show">
+					<li class = "show_pic">
+						<img src="images/gao2.jpg">
+					</li>
+					<li class = "goods_mame">
+						T恤白色
+					</li>
+					<li class = "price">
+						￥49.0元
+					</li> -->
+					
+				</ul> 
+			</div> 
+		</section>
+		<footer class = "foot">
+			<li class = "bottom_pic" id="firstPage">
+
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-shouye-shouye"></use>
+				</svg><br/>
+				<span>
+					首页
+				</span>
+			</li>
+			<li class = "bottom_pic">
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-fenlei"></use>
+				</svg><br/>
+				<span>
+					分类
+				</span>
+			</li>
+			<li class = "bottom_pic" id="bottom_pic_car">
+
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-gouwudai"></use>
+				</svg><br/>
+				<span class = "shopping_car_pic">
+					购物袋
+				</span>
+			</li>
+			<li class = "bottom_pic" id = "myShow">
+
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-iconfontwode"></use>
+				</svg><br/>
+				<span>
+					我的秀
+				</span>
+			</li>
+			
+		</footer>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src = "aliyunImg/icon/iconfont.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+
+
+
+	//var getcookie = function(name){
+	//	var all = document.cookie;
+	//	alert(all);
+	//	if(all === '') return false;
+	//	var list = all.split(';');
+	//	for(var i = 0; i < list.length; i++){
+	//		var match = list[i].split('=')[0];
+	//		var value = decodeURIComponent(list[i].split('=')[1]);
+	//		if(match === name){
+	//			return value;
+	//		}
+	//	}
+	//	return false;
+	//}
+	function pramary(){
+		$.ajax({
+
+			url:"http://datainfo.duapp.com/shopdata/getclass.php",
+			type:"get",
+			// dataType:'text',
+			success:function(data){
+				var html = "";
+				var arr = JSON.parse(data);
+				//console.log(arr);
+				for(var i = 0;i < arr.length;i++){
+
+					html += "<li class = ' iconfont' id = '" + arr[i].classID + "'>" +  arr[i].icon  +"</li>"
+					 
+				 
+				}
+
+				$(".classify").html(html);
+
+
+				var arr2 = $(".classify").find("li");
+				 for(var i = 0;i <　arr2.length;i++){
+				 	arr2[i].onclick = function(){
+				 		arr2.css("color","#000046");
+				 		this.style.color = "white";
+				 		var id = this.id;
+				 		$.ajax({
+				 			url:" http://datainfo.duapp.com/shopdata/getGoods.php",
+				 			type:"get",
+				 			data:{classID:id},
+				 			dataType:"jsonp",
+				 			success:function(data){
+				 				console.log(data);
+				 				var html = "";
+				 				for(var i = 0;i < data.length;i++){
+
+
+				 					html += "<li class = 'show_pic' id = '" + data[i].goodsID + "'><img src = '" + JSON.parse(data[i].imgsUrl)[0] + "' /><span class = 'goodsName'>" + data[i].goodsName + "</span><span class = 'price'>" + data[i].price + "</span></li>"
+
+				 				}
+				 				
+				 				$(".show").html(html);
+
+				 				 var limg = document.getElementsByClassName("show_pic");
+				 				 for(var i = 0;i < limg.length ; i++){
+					 				limg[i].onclick = function(){
+
+					 					var id = this.id;
+					 				window.location.href = "details.html?"+id;
+					 				}
+
+								}
+
+
+
+				 			}
+
+				 		})
+				 	}
+				 }
+
+			}
+
+
+
+
+
+
+		})
+	}
+	
+	function pramaryList(){
+		$.ajax({
+			url:" http://datainfo.duapp.com/shopdata/getGoods.php",
+			type:"get",
+			data:{},
+			
+			dataType:"jsonp",
+			 
+			success:function(data){
+				//console.log(data);
+				 var html = "";
+				 for(var i = 0; i < data.length ;i++){
+				 		html += "<li class = 'show_pic' id = '" + data[i].goodsID + "'><img src = '" + JSON.parse(data[i].imgsUrl)[0] + "' /><span class = 'goodsName'>" + data[i].goodsName + "</span><span class = 'price'>" + data[i].price + "</span></li>" 
+				 }
+				 $(".show").html(html);
+				 var limg = document.getElementsByClassName("show_pic");
+				  for(var i = 0;i < limg.length ; i++){
+					 	limg[i].onclick = function(){
+
+					 	var id = this.id;
+					 	window.location.href = "details.html?"+id;
+					 }
+
+				}
+				 
+			}
+		})
+	}
+
+	function loadmore() {
+		$.ajax({
+			url:" http://datainfo.duapp.com/shopdata/getGoods.php",
+			type:"get",
+			data:{},
+			
+			dataType:"jsonp",
+			 
+			success:function(data){
+				//console.log(data);
+				 var html = "";
+				 for(var i = 0; i < data.length ;i++){
+				 		html += "<li class = 'show_pic' id = '" + data[i].goodsID + "'><img src = '" + JSON.parse(data[i].imgsUrl)[0] + "' /><span class = 'goodsName'>" + data[i].goodsName + "</span><span class = 'price'>" + data[i].price + "</span></li>" 
+				 }
+				 $(".show").append(html);
+				 var limg = document.getElementsByClassName("show_pic");
+				  for(var i = 0;i < limg.length ; i++){
+					 	limg[i].onclick = function(){
+
+					 	var id = this.id;
+					 	window.location.href = "details.html?"+id;
+					 }
+
+				}
+				 
+			}
+		})
+	}
+	pramary();
+	pramaryList();
+	
+		$('.main').on('scroll',function(){
+		    //console.log('正在滑动f');
+
+		    var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+		    var scrollHeight = $('.goods_list').height();   //当前页面的总高度
+		    var clientHeight = $(this).height();    //当前可视的页面高度
+		    // console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+		    var i = 997;
+		    if(scrollTop + clientHeight >= scrollHeight){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部 count++;         //每次滑动count加1
+		      // filterData(serviceTypeId,industryId,cityId,count); //调用筛选方法，count为当前分页数
+		      //console.log(scrollTop+"|"+scrollHeight);
+
+		      if(loadmore){
+		        loadmore();
+		      }
+		    }else if(scrollTop<=0){
+		      //滚动条距离顶部的高度小于等于0 TODO
+		      //alert("下拉刷新，要在这调用啥方法？");
+		      
+		      //console.log('上拉');
+		      if(pramaryList){
+		        pramaryList();
+		      }
+
+		    }
+
+		  });
+	
+	/*var xhl = null;
+
+	try{
+		xhl = new XMLHttpRequest();
+
+	}catch(error){
+		xhl = ActiveXobject('Microsoft XMLHTTP');
+	}
+	xhl.open("get","http://datainfo.duapp.com/shopdata/getGoods.php",true);
+	  xhl.send();
+	xhl.onreadystatechange = function(){
+
+		if(xhl.readyState == 4){
+
+			var data = xhl.responseText;
+			var explain = JSON.parse(data);
+			console.log(data);
+		}
+	} 
+*/
+
+
+
+	$(".shoppingCar").on("click",function(){
+
+		var name = localStorage.getItem('name');
+		var password = localStorage.getItem('password');
+		//alert(name+'|'+password);
+		if(name&&password){
+			window.location.href = "shopping_car.html";
+		}else{
+			window.location.href = "login.html";
+		}
+	})
+	$("#bottom_pic_car").on("click",function(){
+		var name = localStorage.getItem('name');
+		var password = localStorage.getItem('password');
+		//alert(name+'|'+password);
+		if(name&&password){
+			window.location.href = "shopping_car.html";
+		}else{
+			window.location.href = "login.html";
+		}
+
+	})
+	
+
+
+
+
+
+	$('#myShow').on('click',function(){
+		window.location.href = "myShow.html";
+	})
+
+	$('#firstPage').on('click',function(){
+		window.location.href = 'index.html'
+	})
+
+}
+
+</script>

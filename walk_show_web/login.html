@@ -1,0 +1,212 @@
+ <!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="utf-8" name = "viewport"
+	content = "width = device-width,initial-scale = 1.0,user-scalable = no">
+	<title>login</title>
+	<script type="text/javascript" src = "js/zepto.js"></script>
+	<script type="text/javascript" src = "js/zepto-touch.js"></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+
+		}
+
+		.box{
+			height: 100%;
+			width: 100%;
+			display: -webkit-box;
+			display: box;
+			-webkit-box-orient:vertical;
+			box-orient:vertical;
+		}
+		.head{
+			height: 50px;
+			width: 100%;
+			font-size: 30px;
+			font-weight: 900;
+			color: #FFFFFF;
+			background: #A90506;
+			text-align: center;
+			line-height: 50px;
+		}
+		.content{
+			background: #F3EFF0;
+			box-flex:1;
+			-webkit-box-flex:1;
+			text-align: center;
+		}
+		
+		.id,.secret{
+			height: 50px;
+			width: 90%;
+			border:0;
+			margin:5px;
+		}
+		.id{
+			margin-top: 20px;
+		}
+
+		.forget{
+			color: red;
+			font-size: 20px;
+		}
+		.show_password{
+			font-size: 20px;
+			color: #676566;
+		}
+		.choice_show{
+			background: #F3EFF0;
+			height: 20px;
+			width: 20px;
+			 
+			 
+			 
+
+		}
+
+		.text_first{
+			 
+			margin-top: 20px;
+			margin-left:-35%;
+		}
+		.choice_remmber{
+			height: 20px;
+			width: 20px;
+			margin-right: 10px;
+		}
+		.text_second{
+			font-size: 20px;
+			color: #5B5B5B;
+			margin-left: -40%;
+			margin-top: 10px;
+		}
+		.login{
+			margin-top:30%;
+			background: #C50808;
+		}
+		.login,.register{
+			outline: 0;
+			 
+			height: 60px;
+			width: 80%;
+			color: white;
+			font-size: 30px;
+			border-radius: 20px;
+
+		}
+		.register{
+			background: #414141;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class = "box">
+		
+		<header class = "head">
+
+			开心摇摇用户登录
+		</header>
+		<section class = "content">
+			<input type="text" placeholder="请输入用户名" class="id"><br/>
+			<input type="password" placeholder="请输入密码" class="secret" >
+			
+
+			<p class = "text_first">
+				<input type="checkbox" class = "choice_show">
+				<span class = "show_password">
+					显示密码
+				</span>
+				<span class = "forget">
+					忘记密码？
+				</span>
+			</p>
+			<p class = "text_second">
+				<input type="checkbox" class = "choice_remmber">记住密码自动登录
+			</p>
+
+
+			<button class = "login">
+				登录
+			</button>
+
+			<a href = 'register.html'>
+			<button class = "register">
+				注册
+			</button>
+			</a>
+		</section>
+
+
+	</div>
+	
+
+<script type="text/javascript">
+	var setcookie = function(name,value,daysTolive){
+		var cookie = name + '=' + encodeURIComponent(value);
+		if(typeof daysTolive === 'number'){
+			cookie += ';max-age=' + (daysTolive*60*60*24);
+		}else{
+			alert('请输入数字格式的日期')
+		}
+		document.cookie = cookie;
+	}
+	var sure = function(warning){
+		var toRegister = confirm(warning+'你是否已注册账号，若还未注册，请点击确定按钮跳转至注册页面，也可通过页面注册按钮完成跳转')
+		alert(toRegister)
+		if(toRegister){
+			window.location.href = "register.html";
+		 }else{
+				return;
+		}
+	}
+	$(function(){
+		$(".login").on("click",function(){
+			var sign = $('.id').val();
+			var password = $('.secret').val();
+			if(sign&&password){
+				$.ajax({
+					url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+					type:"get",
+					data:{
+						status:"login",
+						userID:$(".id").val(),
+						password:$(".secret").val(),
+					},
+					 
+					success:function(data){
+						 //console.log(data);
+						var user = data.userID;
+						if(data == 0){
+							//alert("");
+							sure('你的用户名不存在！');
+						}else if(data == 2){
+							sure('你的用户名与密码不符！')
+						}else{
+							localStorage.setItem("userID",user)
+							var nameVal = $('.id').val();
+							localStorage.setItem("name",nameVal);
+							var passwordVal = $('.secret').val();
+							localStorage.setItem('password',passwordVal);
+							window.location.href = "shopping_car.html";
+						}
+					}
+
+				})
+			}else{
+				confirm("请将信息填写完整")
+			}
+		})
+
+	
+	})
+</script>
+</body>
+</html>

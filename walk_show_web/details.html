@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="utf-8" name = "viewport" content = "width = device-width,initial-scale = 1.0,user-scalable = no"/>
+	<title>商品详情</title>
+	<script type="text/javascript" src = "js/zepto.js"></script><!-- jq删减版 -->
+	<script type="text/javascript" src = "js/zepto-touch.js"></script>
+	
+	<script type="text/javascript" src = "js/swiper-3.3.1.jquery.min.js"></script>
+	<script type="text/javascript" src = "js/swiper.animate1.0.2.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+
+	<style type="text/css">
+			*{
+				margin:0;
+				padding: 0; 
+			}
+			html,body{
+				height: 100%;
+				width: 100%;
+				font-size: 64.5%;
+			}
+			body{
+				font-size: 1.6rem;
+			}
+			.box{
+				/* display: -webkit-box; */
+				display: box;
+				width: 100%;
+				height: 100%;
+				/* -webkit-box-orient:vertical;
+				box-orient:vertical; */
+			}
+
+			.head,.foot{
+				width: 100%;
+				height: 10%;
+				line-height: 10%;
+			}
+			.head{
+				background: #D01279;
+				position: relative;
+			}
+			.foot{
+				background: #A3A3A3;
+				text-align: center;
+				line-height: 100%;
+			}
+			.main{
+				 height: 80%;
+				 width: 100%;
+
+			}
+			
+			.title{
+				display: inline-block;
+				color: white;
+				font-size: 3rem;
+				font-weight: 800;
+				position: absolute;
+				top:50%;
+				left: 30%;
+
+			}
+			.can{
+				position: absolute;
+				top:30%;
+				left: 7%;
+			}
+			.people,.lock{
+				display: inline-block;
+				width: 3rem;
+				height: 3rem;
+				position: absolute;
+				
+				top:25%;
+			}
+			.lock{
+				left: 87%;
+			}
+			.people{
+				left: 75%;
+			}
+
+			.people img,.lock img{
+				height: 100%;
+				width: 100%;
+			}
+			.addToCar{
+				height: 90%;
+				width: 70%;
+				background: #ED0085;
+				color: white;
+				font-size: 2rem;
+				font-weight: 700;
+				border-radius:1rem; 
+				margin-top: 0.2rem;
+				outline: 0;
+
+			}
+			.container{
+				height:55%;
+				width: 100%;
+			}
+			.slide1,.slide2,.slide3{
+				height:100%;
+				width: 100%;
+
+			}
+			.slide1 img{
+				height: 100%;
+				width: 100%;
+			}
+			.slide2 img{
+				height: 100%;
+				width: 100%;
+
+			}
+			.slide3 img{
+				height: 100%;
+				width: 100%;
+
+			}
+			.text2{
+				height: 35%;
+				width: 100%;
+				background: #F2EFEF;
+				overflow: hidden;
+			}
+			.text2 p{
+				margin:2% 0 0 5%; 
+				color: #454545;
+				font-size: 2rem;
+				font-weight: 700;
+			}
+			 .to_details{
+			 	height: 10%;
+			 	text-align: center;
+		 
+			 	
+			 	font-weight: 700;
+			 	position: relative;
+			 	 
+			 }
+			 .a_details{
+			 	
+			 	 
+			 	margin-top: 5%; 
+
+
+			 }
+			 .a_details a{
+			 	color: #656565;
+			 	font-size: 2rem;
+			 	text-decoration: none;
+
+			 }
+			 .pointer{
+			 	position:absolute;
+			 	font-weight: 700;
+			 	font-size: 2rem;
+			 	color: #797979;
+			 	display: inline-block;
+			 	  top: 35%;
+			 	 right: 16%; 
+			  
+
+			 }
+			 .to_details{
+			 	 float:left;
+			 	 width: 100%;
+			 	 text-align: center;
+			 	 line-height: 100%;
+
+			 }
+	</style>
+</head>
+<body>
+	<div class = "box">
+		<header class = "head">
+
+			<a href="index.html">
+				<canvas class = "can" height = "30px" width = "30px">
+				</canvas>
+			</a>
+			<span class = "title">商品资料</span>
+			<span class = "people">
+				<img src = "images/detials_03.jpg"/>
+			</span>
+			<span class = "lock">
+				<img src = "images/details2_03.jpg"/>
+			</span>
+		</header>
+		<section class = "main">
+
+
+
+			<div class="swiper-container container">
+			    <div class="swiper-wrapper lood">
+			        <div class="swiper-slide slide1"><!-- <img src="images/gao1.jpg"> --></div>
+			        <div class="swiper-slide slide2"><!-- <img src="images/gao2.jpg"> --></div>
+			        <div class="swiper-slide slide3"><!-- <img src="images/gao3.jpg"> --></div> 
+			    </div>
+			    <!-- 如果需要分页器 -->
+			    <div class="swiper-pagination"></div>
+			</div>
+
+			
+
+
+			<div class="text2">
+				
+				<!-- <p class="title1">美斯特邦威&nbsp;&nbsp;米底红色花朵印花短袖连衣裙</p>
+				<p class="price">185</p>
+				<p>尺码：
+					<span class = "size1">160/84A</span> 
+					<span class = "size2">165/88A</span>
+				</p>
+				<p>数量：1 </p> -->
+			
+			</div> 
+
+
+			<div class="to_details">
+
+				<p class="a_details"><a href="#">查看商品详情</a></p>
+				<span class = "pointer">></span>
+
+			</div>
+
+		</section>
+
+
+
+
+
+		<footer class = "foot">
+
+			<button class = "addToCar">放入购物袋</button>
+
+		</footer>
+	</div>
+
+
+
+
+
+
+	<script>        
+		  var mySwiper = new Swiper ('.swiper-container', {
+		    direction: 'horizontal',
+		    loop: true,
+		    autoplay:1000,
+		    // 如果需要分页器
+		    pagination: '.swiper-pagination',
+		    
+		   
+		  })        
+
+	 </script>
+	
+</body>
+</html>
+<script type="text/javascript">
+
+	$(function(){
+
+		var can = document.getElementsByClassName("can")[0];
+		var cans = can.getContext("2d");
+
+		cans.beginPath();
+		cans.fillStyle = "#F1F1F1";
+		cans.moveTo(30,10);
+		cans.lineTo(30,20);
+		cans.lineTo(15,20);
+		cans.lineTo(15,30);
+		cans.lineTo(0,15);
+		cans.lineTo(15,0);
+		cans.lineTo(15,10);
+		cans.lineTo(30,10);
+		cans.fill();
+		cans.closePath();
+
+		var str = window.location.href;
+		var str2 = str.split("?");
+		var str3 = str2[1];
+		var str4 = str3.split("#");
+		var str5 = str4[0];
+		/*alert(str5);*/
+		 
+		
+
+		 $.ajax({
+
+			url:" http://datainfo.duapp.com/shopdata/getGoods.php",
+			type:"get",
+			data:{goodsID:str5},
+			dataType:"jsonp",
+
+			success:function(data){
+				var html1 = "";
+				var html2 = "";
+				console.log(data);
+				var arr1 = JSON.parse(data[0].imgsUrl);
+				var box1 = $(".slide1");
+				var box2 = $(".slide2");
+				var box3 = $(".slide3");
+			 		/*console.log(box);*/
+				 
+					 var img1 = "<img src='"+ arr1[0] +"'>";
+					 var img2 = "<img src = '"+arr1[1] + "'>";
+					 var img3 = "<img src = '"+arr1[2]+"'>";
+					 var obj1 = $(".text2");
+					  box1.append(img1);
+					  box2.append(img2);
+					  box3.append(img3);
+			         
+			    html1 += " <p class='title1'>" + data[0].goodsName + "</p><p class='price'>"+ data[0].price +"</p><p>尺码：<span class = 'size1'>160/84A</span> <span class = 'size2'>165/88A</span></p><p>数量：1 </p> "
+
+			   		 obj1.html(html1);
+			         
+ 
+			}
+
+
+			
+			
+			
+
+
+		})
+
+		 $(".to_details").on("click",function(){
+				window.location.href = "show_explain.html?" + str5;
+			})
+ 
+
+		 $(".addToCar").on("click",function(){
+		 	var name = localStorage.getItem("name");
+		 	var password = localStorage.getItem("password");
+		 	if(name&&password){
+		 		var user = localStorage.getItem("userID");
+			 	$.ajax({
+			 		url:"http://datainfo.duapp.com/shopdata/updatecar.php",
+			 		type:"get",
+			 		data:{
+			 			userID:user,
+			 			goodsID:str5,
+			 			number:1,
+
+			 		},
+			 		success:function(data){
+			 			if(data == 1){
+			 				alert("成功加入购物车");
+			 			}else if(data == 0){
+			 				alert("加入购物车失败");
+			 			}
+			 		}
+			 	})
+			 }else{
+			 	window.location.href = 'login.html';
+			 }
+		 	
+		 })
+
+
+
+
+	})
+
+
+
+
+	
+
+
+
+</script>

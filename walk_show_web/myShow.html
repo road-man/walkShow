@@ -1,0 +1,502 @@
+<html>
+<head>
+<meta http-equiv="Content-Type"  charset="utf-8" name="viewport" content = "width=device-width,user-scalable=no,initial-scale=1.0" /> 
+<title>我的秀</title>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	html{
+		font-size: 64.5%;
+	}
+	html,body{
+		width: 100%;
+		height: 100%;
+	}
+	.box{
+		width: 100%;
+		height: 100%;
+		display: -webkit-box;
+		display: box;
+		-webkit-box-orient:vertical;
+		background-color: lightgrey;
+	}
+	.icon {
+		   width: 1em; height: 1em;
+		   vertical-align: -0.15em;
+		   fill: currentColor;
+		   overflow: hidden;
+		}
+	header,footer{
+		font-size: 3rem;
+		background:#484850;
+		width: 100%;
+		height: 5rem;
+		display: -webkit-box;
+		display: box;
+		color:#FFFFFF;
+
+	}
+	header{
+		line-height: 5rem;
+	}
+	.seting{
+		-webkit-box-flex:1;
+		box-flex:1;
+		margin-top: 1rem;
+		display: block;
+		
+	}
+	.email{
+		-webkit-box-flex:1;
+		box-flex:1;
+		display: block;
+		margin-top: 1rem;
+	}
+	.title{
+		-webkit-box-flex:1;
+		box-flex:1;
+		text-align: center;
+		display: block;
+		
+		font-family: 'microsoft yahei'
+	}
+	.main{
+		-webkit-box-flex:1;
+		box-flex:1;
+		overflow: scroll;
+	}
+	.main::-webkit-scrollbar{
+		display: none;
+	}
+
+	.loginRegister{
+		width: 100%;
+		height: 6rem;
+		background-color: white;
+		position: relative;
+	}
+
+	.loginContainer{
+		left: 50%;
+		top: 50%;
+		margin-top: -2rem;
+		margin-left: -7rem;
+		position: absolute;
+		border: 1px solid grey;
+		width:14rem;
+		height: 4rem;
+		font-size: 2rem;
+		font-family: "microsoft yahei";
+		text-align: center;
+		border-radius: 0.4rem;
+		border-spacing: 0;
+	}
+
+	.register{
+		display: inline-block;
+		height: 2rem;
+		
+		
+		margin-top: 1rem;
+		text-align: center;
+		line-height: 2rem;
+		margin-right: 0.5rem;
+	}
+	.gap{
+
+		display: inline-block;
+		height: 2rem;
+		border-right: 1px solid grey;
+		width: 0;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-top: -1rem;
+		margin-left: -0.5px;
+	}
+	.login{
+		margin-top: 1rem;
+		display: inline-block;
+		height: 2rem;
+		
+		text-align: center;
+		line-height: 2rem;
+		margin-left: 0.5rem;
+
+	}
+
+	.menuService{
+		height: 8rem;
+		width: 100%;
+		background-color: white;
+		margin-top: 2rem;
+	}
+	.menuContainer{
+		height: 3rem;
+		width: 100%;
+		border-bottom: 0.5px solid grey;
+		font-size:2rem;
+		line-height: 3rem;
+		display: -webkit-box;
+		display: box;
+	}
+	.allMenu{
+		-webkit-box-flex:1;
+		box-flex:1;
+		display: block;
+		text-align: right;
+		margin-right: 1rem;
+		color: grey;
+		font-family: "microsoft yahei";
+	}
+	.menu{
+		text-align: left;
+		display: block;
+		-webkit-box-flex:1;
+		box-flex:1;
+		margin-left: 1rem;
+		color: black;
+		font-family: "microsoft yahei"
+	}
+
+	.serviceContainer{
+		height: 4.9rem;
+		width: 100%;
+		font-size:1.5rem;
+		display: -webkit-box;
+		display: box;
+		text-align: center;
+	}
+	.service_pic{
+		list-style: none;
+		-webkit-box-flex:1;
+		box-flex:1;
+		font-family: "microsoft yahei"
+	}
+	.serviceText{
+		color: black;
+	}
+    .service_pic .img{
+		font-size: 3rem;
+		margin-top: 0.5rem;
+	}
+	.divide{
+		
+		height: 4rem;
+		margin-top: 0.5rem;
+		border-right: 1px solid grey;
+	}
+	.divide:nth-child(1){
+		left: 20%;
+	}
+
+	.information{
+		width: 100%;
+		height: 5rem;
+		background-color: white;
+		margin-top: 2rem;
+		display: -webkit-box;
+		display: box;
+		font-size: 1.5rem;
+		text-align: center;
+		color: black;
+		font-family: "microsoft yahei";
+	}
+	.inform{
+		-webkit-box-flex:1;
+		box-flex:1;
+		margin-top: 1rem;
+	}
+
+
+	.moreFunc{
+		width: 100%;
+		height: 26.5rem;
+		background-color: white;
+		margin-top: 2rem;
+		text-align: center;
+		table-layout:fixed;
+		border:0;
+	}
+
+	.moreFuncImg{
+		
+		font-size: 4rem;
+	}
+	.moreFuncText{
+		display: inline-block;
+		font-size: 2rem;
+		font-family: "microsoft yahei";
+		margin-top: 1rem;
+	}
+	tr{
+		border:0; 
+		
+	}
+	td{
+		border-top: 0;
+		
+		border-left: 0
+	}
+	td:nth-child(4){
+		border-right: 0;
+	}
+	td:nth-child(8){
+		border-right:0 
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	.bottom_pic{
+		-webkit-box-flex:1;
+		box-flex:1;
+		list-style: none;
+		font-size: 0.2rem;
+		text-align: center;
+	}
+	.bottom_pic span{
+		display: inline-block;
+		font-size: 1.6rem; 
+		margin-top: 0.1rem;
+	}
+	.bottom_pic .img{
+		 /*height: 2.2rem;
+		 width: 3.5rem;*/
+		 font-size: 3.5rem;
+	}
+
+</style>
+</head>
+<body>
+	<div class="box">
+		<header>
+			<svg class="icon seting" aria-hidden="true">
+			  <use xlink:href="#icon-set"></use>
+			</svg>
+			<span class = 'title'>我的秀</span>
+			<svg class="icon email" aria-hidden="true">
+			  <use xlink:href="#icon-email"></use>
+			</svg>
+		</header>
+		<section class = "main">
+			<div class="loginRegister">
+				<div class = "loginContainer">
+					<span class = "register">注册</span>
+					<span class = "gap"></span>
+					<span class = "login">登录</span>
+				</div>
+				
+			</div>
+			<div class="menuService">
+				<div class="menuContainer">
+					<span class = "menu">订单</span>
+
+					<span class = "allMenu">
+						全部订单
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-iconfontright"></use>
+						</svg>
+					</span>
+				</div>
+				<div class="serviceContainer">
+					<li class = "service_pic">
+						<svg class="icon img" aria-hidden="true">
+						  <use xlink:href="#icon-daifukuan"></use>
+						</svg><br/>
+						<span class = "serviceText">
+							待付款
+						</span>
+					</li>
+					<div class="divide"></div>
+					<li class = "service_pic">
+						<svg class="icon img" aria-hidden="true">
+						  <use xlink:href="#icon-daifahuo"></use>
+						</svg><br/>
+						<span class = "serviceText">
+							待发货
+						</span>
+					</li>
+					<div class="divide"></div>
+					<li class = "service_pic">
+						<svg class="icon img" aria-hidden="true">
+						  <use xlink:href="#icon-daishouhuo"></use>
+						</svg><br/>
+						<span class = "serviceText">
+							待收货
+						</span>
+					</li>
+					<div class="divide"></div>
+					<li class = "service_pic">
+						<svg class="icon img" aria-hidden="true">
+						  <use xlink:href="#icon-pinglun"></use>
+						</svg><br/>
+						<span class = "serviceText">
+							待评论
+						</span>
+					</li>
+					<div class="divide"></div>
+					<li class = "service_pic">
+						<svg class="icon img" aria-hidden="true">
+						  <use xlink:href="#icon-shouhoufuwu"></use>
+						</svg><br/>
+						<span class = "serviceText">
+							售后服务
+						</span>
+					</li>
+				</div>
+			</div>
+			<div class="information">
+				<p class="inform">
+					<span>0张</span><br/>
+					<span>优惠券</span>
+				</p>
+				<p class="inform">
+					<span>0分</span><br/>
+					<span>积分</span>
+				</p>
+				<p class="inform">
+					<span>0元</span><br/>
+					<span>账户余额</span>
+				</p>
+				<p class="inform">
+					<span>0元</span><br/>
+					<span>分享返现</span>
+				</p>
+			</div>
+			<table class="moreFunc" border="1" cellpadding="0" cellspacing="0" >
+				<tr>
+					<td>
+						<svg class="icon moreFuncImg" aria-hidden="true">
+						  <use xlink:href="#icon-ziyuan"></use>
+						</svg><br/>
+						<span class = "moreFuncText">收藏</span>
+					</td>
+					<td>
+						<svg class="icon moreFuncImg" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test"></use>
+						</svg><br/>
+						<span class = "moreFuncText">关注</span>
+					</td>
+					<td>
+						<svg class="icon moreFuncImg" aria-hidden="true">
+						  <use xlink:href="#icon-liulanjilua"></use>
+						</svg><br/>
+						<span class = "moreFuncText">浏览记录</span>
+					</td>
+					<td>
+						<svg class="icon moreFuncImg" aria-hidden="true">
+						  <use xlink:href="#icon-lianxikefu"></use>
+						</svg><br/>
+						<span class = "moreFuncText">联系客服</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<svg class="icon moreFuncImg" aria-hidden="true">
+						  <use xlink:href="#icon-unie651"></use>
+						</svg><br/>
+						<span class = "moreFuncText">我要吐槽</span>
+					</td>
+					<td>
+						<svg class="icon moreFuncImg" aria-hidden="true">
+						  <use xlink:href="#icon-qiandao"></use>
+						</svg><br/>
+						<span class = "moreFuncText">签到</span>
+					</td>
+					<td>
+						<svg class="icon moreFuncImg" aria-hidden="true">
+						  <use xlink:href="#icon-zhediechi"></use>
+						</svg><br/>
+						<span class = "moreFuncText">尺码助手</span>
+					</td>
+					<td>
+						<svg class="icon moreFuncImg" aria-hidden="true">
+						  <use xlink:href="#icon-yaoyiyao1"></use>
+						</svg><br/>
+						<span class = "moreFuncText">摇一摇</span>
+					</td>
+				</tr>
+			</table>
+		</section>
+		<footer class = "foot">
+			<li class = "bottom_pic" id="firstPage">
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-shouye-shouye"></use>
+				</svg><br/>
+				<span>
+					首页
+				</span>
+			</li>
+			<li class = "bottom_pic">
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-fenlei"></use>
+				</svg><br/>
+				<span>
+					分类
+				</span>
+			</li>
+			<li class = "bottom_pic" id="bottom_pic_car">
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-gouwudai"></use>
+				</svg><br/>
+				<span>
+					购物袋
+				</span>
+			</li>
+			<li class = "bottom_pic" id = "myShow">
+				<svg class="icon img" aria-hidden="true">
+				  <use xlink:href="#icon-iconfontwode"></use>
+				</svg><br/>
+				<span>
+					我的秀
+				</span>
+			</li>
+		</footer>
+	</div>
+	<script type="text/javascript" src = "aliyunImg/icon/iconfont.js"></script>
+	<script type="text/javascript" src = "js/zepto.js"></script>
+	<script type="text/javascript">
+
+		$("#bottom_pic_car").on("click",function(){
+			var name = localStorage.getItem('name');
+			var password = localStorage.getItem('password');
+			//alert(name+'|'+password);
+			if(name&&password){
+				window.location.href = "shopping_car.html";
+			}else{
+				window.location.href = "login.html";
+			}
+
+		})
+		
+
+		$('#myShow').on('click',function(){
+			window.location.href = "myShow.html";
+		})
+
+		$('#firstPage').on('click',function(){
+			window.location.href = 'index.html';
+		})
+		$('.login').on('click',function(){
+			window.location.href = 'login.html';
+		})
+		$('.register').on('click',function(){
+			window.location.href = 'register.html';
+		})
+		$('.seting').on('click',function(){
+			window.location.href = 'seting.html';
+		})
+	</script>
+</body>
+</html>

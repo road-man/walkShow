@@ -1,0 +1,217 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" name="viewport" content="width = device-width,initial-scale = 1.0,user-scalable = no"/> 
+	<title>设置</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+			font-family: "microsoft yahei";
+			background-color: lightgrey;
+		}
+		html{
+			font-size: 64.5%;
+		}
+		.icon {
+		   width: 1em; height: 1em;
+		   vertical-align: -0.15em;
+		   fill: currentColor;
+		   overflow: hidden;
+		}
+		header{
+			height: 5rem;
+			background-color: white;
+			position: relative;
+			width: 100%;
+			border-bottom: 1px solid grey;
+		}
+		.headText{
+			font-size: 3rem;
+			position: absolute;
+			left: 50%;
+			top: 1rem;
+			margin-left: -3rem;
+		}
+		.left{
+			position: absolute;
+			font-size: 3rem;
+			left: 2rem;
+			top:1.5rem;
+		}
+		.main{
+			width: 100%;
+		}
+		.receive{
+			width: 100%;
+			height: 5rem;
+			background-color: white;
+			margin-top: 2rem;
+			position: relative;
+			border-bottom: 1px solid grey;
+		}
+		.inform{
+			display: inline-block;
+			font-size: 2rem;
+			position: absolute;
+			top: 1.5rem;
+			left: 2rem;
+		}
+		.turnContainer{
+			position: absolute;
+			height: 2rem;
+			width: 4rem;
+			background-color: lightgreen;
+			right: 2rem;
+			top:1.5rem;
+			border-radius: 0.8rem;
+			border: 1px solid lightgrey;
+			transition:all 300ms;
+		}
+		.turnBtn{
+			height: 2rem;
+			width: 2rem;
+			border-radius: 100%;
+			position: absolute;
+			background-color: white;
+			left: 2rem;
+			border: 1px solid lightgrey;
+			transition:all 300ms;
+		}
+		.clear{
+			width: 100%;
+			height: 5rem;
+			position: relative;
+			background-color: white;
+		}
+		.clearData{
+			font-size: 2rem;
+			position: absolute;
+			top:1.5rem;
+			left: 2rem;
+		}
+		.right{
+			font-size: 2rem;
+			position: absolute;
+			top: 1.5rem;
+			right: 2rem;
+			font-size: 3rem;
+		}
+		.update{
+			margin-top: 2rem;
+			border-bottom: 1px solid grey;
+		}
+		.about{
+			border-bottom: 1px solid grey;
+		}
+		.reset{
+			width: 80%;
+			height: 4rem;
+			margin-left: 10%;
+			margin-top: 3rem;
+			border-radius: 0.8rem;
+			outline: 0;
+			font-size: 2rem;
+			font-family: "microsoft yahei";
+			background-color: red;
+			line-height: 4rem;
+		}
+	</style>
+</head>
+<body>
+	<header class = "header">
+		<svg class="icon left" aria-hidden="true">
+		  <use xlink:href="#icon-xiangzuo"></use>
+		</svg>
+		<span class = "headText">设置</span>
+	</header>
+	<section class = "main">
+		<div class="receive">
+			<span class = "inform">接收通知</span>
+			<div class="turnContainer">
+				<div class="turnBtn"></div>
+			</div>
+		</div>
+		<div class="clear">
+			<span class = "clearData">
+				清除缓存
+			</span>
+			<svg class="icon right" aria-hidden="true">
+			  <use xlink:href="#icon-iconfontright"></use>
+			</svg>
+		</div>
+		<div class="clear update">
+			<span class = "clearData updateversion">
+				版本更新
+			</span>
+			<svg class="icon right" aria-hidden="true">
+			  <use xlink:href="#icon-iconfontright"></use>
+			</svg>
+		</div>
+		<div class="clear about">
+			<span class = "clearData linkTo">
+				关于
+			</span>
+			<svg class="icon right" aria-hidden="true">
+			  <use xlink:href="#icon-iconfontright"></use>
+			</svg>
+		</div>
+		<div class="clear recommend">
+			<span class = "clearData recommendUse">
+				应用推荐
+			</span>
+			<svg class="icon right" aria-hidden="true">
+			  <use xlink:href="#icon-iconfontright"></use>
+			</svg>
+		</div>
+		<button class="reset">退出当前账号</button>
+	</section>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="aliyunImg/icon/iconfont.js"></script>
+<script type="text/javascript">
+	var flag = true;
+	$('.turnBtn').on('click',function(){
+		//alert("ok");
+		if(flag){
+			$('.turnBtn').css({"left":0});
+			$('.turnContainer').css({"background-color":"white"});
+			flag = false;
+			localStorage.setItem("key","close");
+		}else{
+			$('.turnBtn').css({"left":"2rem"});
+			$('.turnContainer').css({'background-color':'lightgreen'});
+			flag = true;
+			localStorage.setItem("key","open");
+		}
+	})
+	var key = localStorage.getItem("key");
+	if(key === 'open'){
+		$('.turnBtn').css({"left":"2rem"});
+		$('.turnContainer').css({'background-color':'lightgreen'});
+	}else if(key === 'close'){
+		$('.turnBtn').css({"left":0});
+		$('.turnContainer').css({"background-color":"white"});
+	}
+	$('.left').on("click",function(){
+		window.history.back(-1);
+	})
+	var show1 = localStorage.getItem("password");
+	var show2 = localStorage.getItem("name");
+	if(show1&&show2){
+		$('.reset').css({"display":"block"})
+	}else{
+		$('.reset').css({"display":"none"})
+	};
+	$('.reset').on("click",function(){
+		var resure = confirm("你确定要退出当前账号吗？")
+		if(resure){
+			localStorage.removeItem("name");
+			localStorage.removeItem("password");
+		}
+	})
+</script>
+</body>
+</html>
